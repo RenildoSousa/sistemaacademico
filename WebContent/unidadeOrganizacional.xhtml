@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cliente Crud</title>
+</h:head>
+<h:body>
+	<h1>CRUD - Cliente</h1>
+
+
+	<h:form id="form1">
+
+		<p:panel header="Consultar">
+			<p:panelGrid columns="3">
+		    Codigo:
+		    <p:inputText value="#{unidadeOrganizacionalBean.idPesquisa}" />
+				<p:commandButton value="Pesquisar" action="#{unidadeOrganizacionalBean.pequisar()}"
+					update="form1" />
+
+			</p:panelGrid>
+		</p:panel>
+		<br />
+		<p:panel header="Dados da Unidade">
+			<p:panelGrid columns="2">
+	   
+		    Codigo:
+		    <p:outputLabel value="#{unidadeOrganizacionalBean.unidadeOrganizacional.id}" />
+	
+	        Nome:
+		    <p:inputText value="#{unidadeOrganizacionalBean.unidadeOrganizacional.nome}" />
+
+	        Tipo De Unidade:
+	        <p:outputLabel value="User Profile:"
+									styleClass="control-label" />
+								<p:selectOneListbox value="#{unidadeOrganizacionalBean.unidadeOrganizacional.tipoDeOrganizacao}"
+									styleClass="form-control" size="1" style="height: 34px;">
+		
+									<f:selectItem itemLabel="Select one ..." />
+									<f:selectItems value="#{unidadeOrganizacionalBean.listaTipoDeOrganizacao}"
+										var="tipoDeOrganizacao" itemLabel="#{tipoDeOrganizacao.label}" itemValue="#{tipoDeOrganizacao}" />
+								</p:selectOneListbox>
+
+			</p:panelGrid>
+
+			<br />
+			<p:commandButton value="Cadastrar" action="#{unidadeOrganizacionalBean.inserir()}"
+				update="form1,data1"/>
+
+			<p:commandButton value="Alterar" action="#{unidadeOrganizacionalBean.alterar()}"
+				update="form1,data1"/>
+
+			<p:commandButton value="Apagar" action="#{unidadeOrganizacionalBean.apagar()}"
+				update="form1,data1" />
+
+			<p:commandButton value="Novo" action="#{unidadeOrganizacionalBean.novo()}"
+				update="form1" />
+
+			<p:messages />
+		</p:panel>
+	</h:form>
+
+	<br />
+	
+	<p:panel id="panel1" header="Listar Todas as unidades">
+
+		<p:dataTable id="data1" var="c" value="#{unidadeOrganizacionalBean.listaUnidadeOrganizacional}">
+			<p:column headerText="Código">
+				<h:outputText value="#{c.id}" />
+			</p:column>
+
+			<p:column headerText="Nome">
+				<h:outputText value="#{c.nome}" />
+			</p:column>
+			
+			<p:column headerText="Email">
+				<h:outputText value="#{c.tipoDeOrganizacao}" />
+			</p:column>
+		</p:dataTable>
+
+	</p:panel>
+
+
+</h:body>
+</html>

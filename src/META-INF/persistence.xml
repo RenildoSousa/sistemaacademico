@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="sistemaacademico">
+		<jta-data-source>jdbc/PostgresDS</jta-data-source>
+		<class>br.sistemaacademico.model.Curso</class>
+		<class>br.sistemaacademico.model.Disciplina</class>
+		<class>br.sistemaacademico.model.Matriz</class>
+		<class>br.sistemaacademico.model.Periodo</class>
+		<class>br.sistemaacademico.model.UnidadeOrganizacional</class>
+	</persistence-unit>
+</persistence>

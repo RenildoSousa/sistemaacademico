@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form>
+	<h:commandButton action="aluno?faces-redirect=true" value="Aluno" />
+	<h:commandButton action="curso?faces-redirect=true" value="Curso" />
+	<h:commandButton action="disciplina?faces-redirect=true"
+		value="Disciplina" />
+	<h:commandButton action="matriz?faces-redirect=true"
+		value="Matriz curricular" />
+	<h:commandButton action="professor?faces-redirect=true"
+		value="Professor" />
+	<h:commandButton action="instituicao?faces-redirect=true"
+		value="Instituição" />
+	<h:commandButton action="semestre?faces-redirect=true" value="Semestre" />
+	<h:commandButton action="matricula?faces-redirect=true"
+		value="Matricula" />
+	<h:commandButton action="nota?faces-redirect=true" value="Nota" />
+	<h:commandButton action="periodo?faces-redirect=true" value="Periodo" />
+	<h:commandButton action="disciplinaOfertada?faces-redirect=true"
+		value="Disciplina Of" />
+	<h:commandButton action="frequencia?faces-redirect=true"
+		value="Frequencia" />
+</h:form>
+<h:form id="form1">
+	<p:panel header="Pesquisar curso por ID:">
+		<p:panelGrid columns="3">
+		    		ID:
+		    		<p:inputText value="#{disciplinaOfertadaBean.idPesquisa}" />
+			<p:commandButton value="Pesquisar"
+				action="#{disciplinaOfertadaBean.pesquisar()}" update="form1" />
+
+		</p:panelGrid>
+	</p:panel>
+	<br />
+	<p:panel header="Cadastrar disciplina Ofertada:">
+		<p:panelGrid columns="2">
+	   
+		    		ID do disciplina Ofertada:
+		   			<p:outputLabel
+				value="#{disciplinaOfertadaBean.disciplinaOfertada.id}" />
+		   			
+		   			Semestre:
+		   			<p:inputText value="#{disciplinaOfertadaBean.idSemestre}" />
+		   			
+		   			Disciplina:
+		   			<p:inputText value="#{disciplinaOfertadaBean.idDisciplina}" />
+		   			
+		   			Professor:
+		   			<p:inputText value="#{disciplinaOfertadaBean.idProfessor}" />
+
+
+		</p:panelGrid>
+
+		<br />
+		<p:commandButton value="Incluir"
+			action="#{disciplinaOfertadaBean.insert()}" update="form1,data1" />
+
+		<p:commandButton value="Alterar"
+			action="#{disciplinaOfertadaBean.update()}" update="form1,data1" />
+
+		<p:commandButton value="Deletar"
+			action="#{disciplinaOfertadaBean.delete()}" update="form1,data1" />
+
+		<p:commandButton value="Limpar"
+			action="#{disciplinaOfertadaBean.clean()}" update="form1" />
+
+		<p:messages />
+	</p:panel>
+</h:form>
+
+<br />
+
+<p:dataTable id="data1" var="obj"
+	value="#{disciplinaOfertadaBean.disciplinaOfertadas}">
+	<f:facet name="header">
+            Lista de disciplinas Ofertadas cadastradas:
+            </f:facet>
+
+	<p:column headerText="ID disciplinas Ofertadas">
+		<h:outputText value="#{obj.id}" />
+	</p:column>
+
+	<p:column headerText="Semestre">
+		<h:outputText value="#{obj.semestre.nome}" />
+	</p:column>
+
+	<p:column headerText="Disciplina">
+		<h:outputText value="#{obj.disciplina.nome}" />
+	</p:column>
+
+	<p:column headerText="Professor">
+		<h:outputText value="#{obj.professor.nome}" />
+	</p:column>
+
+
+
+
+</p:dataTable>
+
+</html>

@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="sistemaacademico">
+	<persistence-unit name="sistemaacademico2">
 		<jta-data-source>jdbc/PostgresDS</jta-data-source>
-		<class>br.sistemaacademico.model.Curso</class>
-		<class>br.sistemaacademico.model.Disciplina</class>
-		<class>br.sistemaacademico.model.Matriz</class>
-		<class>br.sistemaacademico.model.Periodo</class>
-		<class>br.sistemaacademico.model.UnidadeOrganizacional</class>
+		<class>br.unitins.model.Aluno</class>
+		<class>br.unitins.model.Curso</class>
+		<class>br.unitins.model.Disciplina</class>
+		<class>br.unitins.model.DisciplinaOfertada</class>
+		<class>br.unitins.model.Frequencia</class>
+		<class>br.unitins.model.Instituicao</class>
+		<class>br.unitins.model.Matricula</class>
+		<class>br.unitins.model.MatrizCurricular</class>
+		<class>br.unitins.model.Nota</class>
+		<class>br.unitins.model.Periodo</class>
+		<class>br.unitins.model.Professor</class>
+		<class>br.unitins.model.Semestre</class>
+		<properties>
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+		</properties>
 	</persistence-unit>
 </persistence>

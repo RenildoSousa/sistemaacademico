@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form>
+	<h:commandButton action="aluno?faces-redirect=true" value="Aluno" />
+	<h:commandButton action="curso?faces-redirect=true" value="Curso" />
+	<h:commandButton action="disciplina?faces-redirect=true"
+		value="Disciplina" />
+	<h:commandButton action="matriz?faces-redirect=true"
+		value="Matriz curricular" />
+	<h:commandButton action="professor?faces-redirect=true"
+		value="Professor" />
+	<h:commandButton action="instituicao?faces-redirect=true"
+		value="Instituição" />
+	<h:commandButton action="semestre?faces-redirect=true" value="Semestre" />
+	<h:commandButton action="matricula?faces-redirect=true"
+		value="Matricula" />
+	<h:commandButton action="nota?faces-redirect=true" value="Nota" />
+	<h:commandButton action="periodo?faces-redirect=true" value="Periodo" />
+	<h:commandButton action="disciplinaOfertada?faces-redirect=true"
+		value="Disciplina Of" />
+	<h:commandButton action="frequencia?faces-redirect=true"
+		value="Frequencia" />
+</h:form>
+<h:form id="form1">
+	<p:panel header="Pesquisar por ID da instituição:">
+		<p:panelGrid columns="3">
+		    ID:
+		    <p:inputText value="#{instituicaoBean.idPesquisa}" />
+			<p:commandButton value="Pesquisar"
+				action="#{instituicaoBean.pesquisar()}" update="form1" />
+
+		</p:panelGrid>
+	</p:panel>
+	<br />
+	<p:panel header="Cadastrar uma instituição">
+		<p:panelGrid columns="2">
+	   
+		    ID da instituição:
+		    <p:outputLabel
+				value="#{instituicaoBean.instituicao.idInstituicao}" />
+	
+	        Instituição nome:
+		    <p:inputText value="#{instituicaoBean.instituicao.nome}" />
+
+		</p:panelGrid>
+
+		<br />
+		<p:commandButton value="Incluir" action="#{instituicaoBean.insert()}"
+			update="form1,data1" />
+
+		<p:commandButton value="Alterar" action="#{instituicaoBean.update()}"
+			update="form1,data1" />
+
+		<p:commandButton value="Deletar" action="#{instituicaoBean.delete()}"
+			update="form1,data1" />
+
+		<p:commandButton value="Limpar" action="#{instituicaoBean.clean()}"
+			update="form1" />
+
+		<p:messages />
+	</p:panel>
+</h:form>
+
+<br></br>
+
+<p:dataTable id="data1" var="obj" value="#{instituicaoBean.instituicaos}">
+	<f:facet name="header">
+             Lista de instituições: 
+            </f:facet>
+
+	<p:column headerText="ID da instituição">
+		<h:outputText value="#{obj.idInstituicao}" />
+	</p:column>
+
+	<p:column headerText="Nome da instituicao}">
+		<h:outputText value="#{obj.nome}" />
+	</p:column>
+
+</p:dataTable>
+
+</html>
